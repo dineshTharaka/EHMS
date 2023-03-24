@@ -7,10 +7,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 import colors from '../utils/colors/Colors';
+import { useNavigate } from "react-router-dom";
 
-const Login = (props) => {
+const Login = () => {
   const [isLoading, setLoading] = useState(false);
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +30,7 @@ const Login = (props) => {
             localStorage.setItem("authToken", res.data.authToken);
             localStorage.setItem("name", res.data.name);
             localStorage.setItem("role", res.data.role);
-            //   navigate('/dashboard')
+              navigate('/dashboard')
           }
           if (res.status === 404) {
           }
