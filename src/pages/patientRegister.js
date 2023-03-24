@@ -23,14 +23,6 @@ const PatientRegister = () => {
           >
             <h4>Patient Register</h4>
             <Form className="text-start">
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
-              </Form.Group>
-
               <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control type="text" placeholder="Name" />
@@ -56,6 +48,14 @@ const PatientRegister = () => {
                 </Form.Select>
               </Form.Group>
 
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
+
               <Form.Group className="mb-3" controlId="formBasicContact">
                 <Form.Label>Contact Number</Form.Label>
                 <Form.Control type="text" placeholder="Contact" />
@@ -73,7 +73,7 @@ const PatientRegister = () => {
 
               <Form.Group className="mb-3" controlId="formBasicGaurdian">
                 <Form.Label>Guardian Name</Form.Label>
-                <Form.Control type="text" placeholder="Password" />
+                <Form.Control type="text" placeholder="Guardian Name" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicGuardianContact">
