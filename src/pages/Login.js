@@ -57,7 +57,7 @@ const Login = (props) => {
           className="shadow-sm text-primary mt-5 p-4 text-center text-center rounded"
         >
           <h4>Login</h4>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} className="text-start">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label style={{  color: colors.success }} >Email address</Form.Label>
               <Form.Control
