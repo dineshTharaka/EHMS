@@ -23,7 +23,7 @@ const Login = (props) => {
         console.log(data);
         setLoading(true);
         //change backend url with real url. note get to post
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}`).then((res) => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}users/1`).then((res) => {
           if (res.status === 200) {
             setLoading(false);
             localStorage.setItem("authToken", res.data.authToken);
