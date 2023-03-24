@@ -49,8 +49,13 @@ const Login = (props) => {
 
   return (
     <Container>
-      <Row>
-        <Col md={{ span: 3, offset: 3 }}>
+      <Row className="justify-content-center mt-5">
+        <Col
+          md={4}
+          sm={12}
+          className="shadow-sm text-primary mt-5 p-4 text-center text-center rounded"
+        >
+          <h4>Login</h4>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
