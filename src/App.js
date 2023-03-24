@@ -1,7 +1,10 @@
+import PatientRegister from "./pages/patientRegister";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   return (
     <div className="App">
-      <h1>hello world</h1>
+      <PatientRegister />
     </div>
   );
 }
