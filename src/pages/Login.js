@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
+import colors from '../utils/colors/Colors';
 
 const Login = (props) => {
   const [isLoading, setLoading] = useState(false);
@@ -58,7 +59,7 @@ const Login = (props) => {
           <h4>Login</h4>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label style={{  color: colors.success }} >Email address</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter email"
@@ -68,7 +69,7 @@ const Login = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label style={{  color: colors.success }}>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
