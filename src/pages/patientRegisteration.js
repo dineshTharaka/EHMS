@@ -13,6 +13,7 @@ import {
   Alert,
   Spinner,
 } from "react-bootstrap";
+import colors from '../utils/colors/Colors';
 
 const PatientRegisteration = () => {
   const [isLoading, setLoading] = useState(false);
@@ -138,7 +139,7 @@ const PatientRegisteration = () => {
                 />
               </Form.Group>
               {errors.dob && (
-                <span style={{ color: "red" }}>{errors.dob.message}</span>
+                <span style={{ color: colors.warning }}>{errors.dob.message}</span>
               )}
 
               <Form.Group className="mb-3" controlId="formBasicAddress">
