@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import PatientRegister from "./pages/patientRegister";
-import Login from "./pages/Login";
+import PatientLogin from "./pages/PatientLogin";
 import Dashboard from "./pages/Dashboard";
 import PatientRegisteration from "./pages/patientRegisteration";
+import StaffLogin from "./pages/StaffLogin";
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -14,11 +15,12 @@ const App = () => {
     <div className="App">
       <Routes>
         {/* All publically available URLs */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/patient-login" element={<PatientLogin />} />
+        <Route path="/staff-login" element={<StaffLogin />} />
         <Route path="/patient-registration" element={<PatientRegister />} />
         <Route path="/patient-registration-page" element={<PatientRegisteration />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<PatientLogin />} />
         {/* Internal URLs */}
       </Routes>
     </div>

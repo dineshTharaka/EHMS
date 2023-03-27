@@ -10,7 +10,7 @@ import colors from '../utils/colors/Colors';
 import { useNavigate } from "react-router-dom";
 import getAPI from "../utils/apis/APIs";
 
-const Login = () => {
+const PatientLogin = () => {
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate()
 
@@ -58,7 +58,7 @@ const Login = () => {
           sm={12}
           className="shadow-sm text-primary mt-5 p-4 text-center text-center rounded"
         >
-          <h4>Login</h4>
+          <h4>Patient Login</h4>
           <Form onSubmit={handleSubmit} className="text-start">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label style={{  color: colors.success }} >Email address</Form.Label>
@@ -98,6 +98,6 @@ const Login = () => {
   );
 };
 
-Login.propTypes = {};
+PatientLogin.propTypes = {};
 
-export default Login;
+export default PatientLogin;
