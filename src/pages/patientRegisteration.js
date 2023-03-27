@@ -14,6 +14,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import colors from '../utils/colors/Colors';
+import getAPI from "../utils/apis/APIs";
 
 const PatientRegisteration = () => {
   const [isLoading, setLoading] = useState(false);
@@ -75,12 +76,12 @@ const PatientRegisteration = () => {
   };
 
   //backend api
-  const authenticateUser = async (data) => {
+  const registerPatient = async (data) => {
     console.log(data);
     try {
       setLoading(true);
       axios
-        .get(`https://641ac1c9c152063412e04401.mockapi.io/users/1`)
+        .get(getAPI("auth"))
         .then((res) => {
           if (res.status === 200) {
             setLoading(false);
@@ -106,7 +107,7 @@ const PatientRegisteration = () => {
             <h4>Patient Register</h4>
             <Form
               className="text-start"
-              onSubmit={handleSubmit(authenticateUser)}
+              onSubmit={handleSubmit(registerPatient)}
             >
               <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Name</Form.Label>

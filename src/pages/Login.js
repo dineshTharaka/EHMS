@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import colors from '../utils/colors/Colors';
 import { useNavigate } from "react-router-dom";
+import getAPI from "../utils/apis/APIs";
 
 const Login = () => {
   const [isLoading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ const Login = () => {
         console.log(data);
         setLoading(true);
         //change backend url with real url. note get to post
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}users/1`).then((res) => {
+        axios.get(getAPI("auth")).then((res) => {
           if (res.status === 200) {
             setLoading(false);
             localStorage.setItem("authToken", res.data.authToken);
