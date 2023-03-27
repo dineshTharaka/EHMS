@@ -17,8 +17,8 @@ const App = () => {
         {/* All publically available URLs */}
         <Route path="/patient-login" element={<PatientLogin />} />
         <Route path="/staff-login" element={<StaffLogin />} />
-        <Route path="/patient-registration" element={<PatientRegister />} />
-        <Route path="/patient-registration-page" element={<PatientRegisteration />} />
+        {/* <Route path="/patient-registration" element={<PatientRegister />} /> */}
+        <Route path="/patient-registration" element={<PatientRegisteration />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<PatientLogin />} />
         {/* Internal URLs */}

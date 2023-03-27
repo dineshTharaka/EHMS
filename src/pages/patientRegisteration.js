@@ -13,7 +13,7 @@ import {
   Alert,
   Spinner,
 } from "react-bootstrap";
-import colors from '../utils/colors/Colors';
+import colors from "../utils/colors/Colors";
 import getAPI from "../utils/apis/APIs";
 
 const PatientRegisteration = () => {
@@ -39,9 +39,9 @@ const PatientRegisteration = () => {
       setHasGurdian(true);
       register("createdBy");
     } else {
-      setHasGurdian(false);
       unregister("guardianName");
       unregister("guardianContactNumber");
+      setHasGurdian(false);
     }
   };
 
@@ -64,8 +64,7 @@ const PatientRegisteration = () => {
   };
 
   const handleChange_age = (event) => {
-    setBirthDate({ dob1: event.target.value }, () => {
-    });
+    setBirthDate({ dob1: event.target.value }, () => {});
 
     var age_latest = { age_latest: calculate_age(event.target.value) };
     console.log(age_latest);
@@ -80,16 +79,14 @@ const PatientRegisteration = () => {
     console.log(data);
     try {
       setLoading(true);
-      axios
-        .get(getAPI("auth"))
-        .then((res) => {
-          if (res.status === 200) {
-            setLoading(false);
-            navigate("/");
-          }
-          if (res.status === 404) {
-          }
-        });
+      axios.get(getAPI("auth")).then((res) => {
+        if (res.status === 200) {
+          setLoading(false);
+          navigate("/");
+        }
+        if (res.status === 404) {
+        }
+      });
     } catch (error) {
       console.error("Error:", error);
     }
@@ -123,10 +120,10 @@ const PatientRegisteration = () => {
                     },
                   })}
                 />
+                {errors.name && (
+                  <span style={{ color: "red" }}>{errors.name.message}</span>
+                )}
               </Form.Group>
-              {errors.name && (
-                <span style={{ color: "red" }}>{errors.name.message}</span>
-              )}
 
               <Form.Group className="mb-3" controlId="formBasicDob">
                 <Form.Label>Date Of birth</Form.Label>
@@ -138,10 +135,12 @@ const PatientRegisteration = () => {
                   })}
                   onChange={handleChange_age}
                 />
+                {errors.dob && (
+                  <span style={{ color: colors.warning }}>
+                    {errors.dob.message}
+                  </span>
+                )}
               </Form.Group>
-              {errors.dob && (
-                <span style={{ color: colors.warning }}>{errors.dob.message}</span>
-              )}
 
               <Form.Group className="mb-3" controlId="formBasicAddress">
                 <Form.Label>Address</Form.Label>
@@ -152,10 +151,10 @@ const PatientRegisteration = () => {
                     required: "Required",
                   })}
                 />
+                {errors.address && (
+                  <span style={{ color: "red" }}>{errors.address.message}</span>
+                )}
               </Form.Group>
-              {errors.address && (
-                <span style={{ color: "red" }}>{errors.address.message}</span>
-              )}
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Gender</Form.Label>
@@ -169,10 +168,11 @@ const PatientRegisteration = () => {
                   <option value="2">Female</option>
                   <option value="3">Other</option>
                 </Form.Select>
+                {errors.gender && (
+                  <span style={{ color: "red" }}>{errors.gender.message}</span>
+                )}
               </Form.Group>
-              {errors.gender && (
-                <span style={{ color: "red" }}>{errors.gender.message}</span>
-              )}
+
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
@@ -190,10 +190,12 @@ const PatientRegisteration = () => {
                 <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text>
+                <br />
+                {errors.email && (
+                  <span style={{ color: "red" }}>{errors.email.message}</span>
+                )}
               </Form.Group>
-              {errors.email && (
-                <span style={{ color: "red" }}>{errors.email.message}</span>
-              )}
+
               <Form.Group className="mb-3" controlId="formBasicContact">
                 <Form.Label>Contact Number</Form.Label>
                 <Form.Control
@@ -207,26 +209,29 @@ const PatientRegisteration = () => {
                     },
                   })}
                 />
+                {errors.contact && (
+                  <span style={{ color: "red" }}>{errors.contact.message}</span>
+                )}
               </Form.Group>
-              {errors.contact && (
-                <span style={{ color: "red" }}>{errors.contact.message}</span>
-              )}
+
               <Form.Group className="mb-3" controlId="formBasicNic">
                 <Form.Label>NIC Number</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="NIC"
+                  placeholder="123V"
                   {...register("nic", {
+                    required: "Required",
                     pattern: {
                       value: /^(0|[1-9]+V\d*)$/, //positive int = /^(0|[1-9]\d*)$/  negative & positive decimal= /^-?(0|[1-9]\d*)(\.\d+)?$/
                       message: "Enter valid nic",
                     },
                   })}
                 />
+                {errors.nic && (
+                  <span style={{ color: "red" }}>{errors.nic.message}</span>
+                )}
               </Form.Group>
-              {errors.nic && (
-                <span style={{ color: "red" }}>{errors.nic.message}</span>
-              )}
+
               {age > 18 || age == null ? (
                 <>
                   <Form.Group className="mb-3" controlId="formBasicGaurdian">
@@ -270,12 +275,12 @@ const PatientRegisteration = () => {
                         },
                       })}
                     />
+                    {errors.gurdianName && (
+                      <span style={{ color: "red" }}>
+                        {errors.gurdianName.message}
+                      </span>
+                    )}
                   </Form.Group>
-                  {errors.gurdianName && (
-                    <span style={{ color: "red" }}>
-                      {errors.gurdianName.message}
-                    </span>
-                  )}
 
                   <Form.Group
                     className="mb-3"
@@ -293,12 +298,12 @@ const PatientRegisteration = () => {
                         },
                       })}
                     />
+                    {errors.guardianContactNumber && (
+                      <span style={{ color: "red" }}>
+                        {errors.guardianContactNumber.message}
+                      </span>
+                    )}
                   </Form.Group>
-                  {errors.guardianContactNumber && (
-                    <span style={{ color: "red" }}>
-                      {errors.guardianContactNumber.message}
-                    </span>
-                  )}
                 </>
               ) : null}
 
@@ -319,10 +324,13 @@ const PatientRegisteration = () => {
                     },
                   })}
                 />
+                {errors.password && (
+                  <span style={{ color: "red" }}>
+                    {errors.password.message}
+                  </span>
+                )}
               </Form.Group>
-              {errors.password && (
-                <span style={{ color: "red" }}>{errors.password.message}</span>
-              )}
+
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
@@ -334,13 +342,14 @@ const PatientRegisteration = () => {
                       value === password || "password do no match",
                   })}
                 />
+                {errors.Password2 && (
+                  <span style={{ color: "red" }}>
+                    {errors.Password2.message}
+                    <br />
+                  </span>
+                )}
               </Form.Group>
-              {errors.Password2 && (
-                <span style={{ color: "red" }}>
-                  {errors.Password2.message}
-                  <br />
-                </span>
-              )}
+
               {!isLoading ? (
                 <Button variant="primary" type="submit">
                   Submit
